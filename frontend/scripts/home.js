@@ -1,4 +1,5 @@
 import Database from "../utils/database.js";
+import { API_BASE_URL } from "../utils/config.js";
 
 // Getting the HTML Elements for manipulation
 const errorBanner = document.querySelector(".main_auth_error");
@@ -20,7 +21,7 @@ let representationData = [1, 1, 1, 1, 1, 1];
 const userID = JSON.parse(localStorage.getItem("userID"));
 
 // Initializing the database
-const database = new Database("http://localhost:5000")
+const database = new Database(API_BASE_URL)
 
 // Function to draw bar chart
 function drawBarChart(dataArray) {

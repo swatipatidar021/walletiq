@@ -8,7 +8,7 @@ const users = require("./routes/users")
 require("dotenv").config()
 
 const app = express();
-PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors({
     origin: "*"

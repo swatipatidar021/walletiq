@@ -1,5 +1,6 @@
 import {FormValidate} from "../utils/validate.js";
 import Database from "../utils/database.js";
+import { API_BASE_URL } from "../utils/config.js";
 
 const nameInput = document.querySelector(".name")
 const emailInput = document.querySelector(".email")
@@ -67,7 +68,7 @@ submitButton.addEventListener("click", async (e) => {
     submitButton.disabled = true;
     submitButton.innerText = "Creating account...";
 
-    const database = new Database("http://localhost:5000")
+    const database = new Database(API_BASE_URL)
     database.postData("users/create", userInfo).then((res) => {
         submitButton.disabled = false;
         submitButton.innerText = originalButtonText;

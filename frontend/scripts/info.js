@@ -1,6 +1,7 @@
 import Database from "../utils/database.js";
 import { FormValidate } from "../utils/validate.js";
 import Elements from "../utils/elements.js";
+import { API_BASE_URL } from "../utils/config.js";
 
 // Getting elements from the banner
 const errorBanner = document.querySelector(".main_auth_error")
@@ -21,7 +22,7 @@ let incomeAmount = 0;
 const userID = JSON.parse(localStorage.getItem("userID"));
 
 // Initializing the database
-const database = new Database("http://localhost:5000");
+const database = new Database(API_BASE_URL);
 
 // Initializing the elements
 const elements = new Elements();
