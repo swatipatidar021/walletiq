@@ -3,7 +3,7 @@
 // - Once deployed, update PRODUCTION_API_URL with your live backend URL
 //   (e.g. from Render, Railway, etc.)
 
-const PRODUCTION_API_URL = "https://your-backend-url.onrender.com";
+const PRODUCTION_API_URL = "https://walletiq-rr6r.onrender.com" ;
 
 const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 
