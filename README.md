@@ -78,5 +78,34 @@ npm run start:frontend  # frontend only, on port 5500
 - Login is verified entirely on the server; the client never receives other users' data
 - Duplicate email signups are blocked
 
+## Deployment
+
+### Backend → Render
+Vercel's serverless model doesn't suit this Express + MongoDB backend as-is (it relies on a persistent server via `app.listen`). Deploy it on **Render** instead:
+
+1. Push this project to GitHub
+2. On [render.com](https://render.com), create a **New Web Service** from your repo
+3. Settings:
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+4. Add an environment variable:
+   - `DATABASE_CONNECT` = your MongoDB connection string
+5. Deploy — you'll get a live URL like `https://walletiq-backend.onrender.com`
+
+### Frontend → Vercel
+1. Open `frontend/utils/config.js` and update:
+   ```js
+   const PRODUCTION_API_URL = "https://your-backend-url.onrender.com";
+   ```
+   Replace with your actual Render URL from above, then commit and push.
+2. On [vercel.com](https://vercel.com), create a **New Project** from your repo
+3. Settings:
+   - **Root Directory**: `frontend/src`
+   - **Framework Preset**: Other (no build step needed)
+4. Deploy — you'll get a live URL like `https://walletiq.vercel.app`
+
+**Note**: `frontend/utils/config.js` automatically uses `http://localhost:5000` when running locally, and switches to `PRODUCTION_API_URL` once deployed — no other code changes needed.
+
 ## License
 This project is licensed under the **MIT License**.
